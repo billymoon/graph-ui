@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import Head from 'next/head'
+import Link from "next/link";
+import Head from "next/head";
 
 export const Layout = (props) => {
   return (
     <div
       style={{
-        margin: '3rem',
+        margin: "3rem",
       }}
     >
       <Head>
@@ -17,12 +17,12 @@ export const Layout = (props) => {
         <Link href="/">
           <a>Home</a>
         </Link>
-        {' | '}
+        {" | "}
         <Link href="/posts">
           <a>Posts</a>
         </Link>
       </header>
       <main>{props.children}</main>
     </div>
-  )
-}
+  );
+};

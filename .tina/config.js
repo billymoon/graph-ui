@@ -93,4 +93,4 @@ export const config = defineStaticConfig({
   schema,
 });
 
-export default config
+export default config;
