@@ -1,6 +1,9 @@
+// import jwt from 'jsonwebtoken';
+// import { setCookie } from 'cookies-next';
 import getConfig from "next/config";
 import getBaseUrl from "~/utils/get-base-url";
 import { decrypt } from "~/utils/crypt";
+import { setJWTCookie } from "~/api-utils/jwt";
 
 const { serverRuntimeConfig } = getConfig();
 
@@ -22,15 +25,24 @@ const apiHandler = async (req, res) => {
   }
   const body = bodyArr.join("&");
 
-  const token = await fetch("https://lichess.org/api/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    },
-    body,
-  }).then((r) => r.json());
+  const { access_token, expires_in } = await fetch(
+    "https://lichess.org/api/token",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body,
+    }
+  ).then((r) => r.json());
 
-  res.json(token);
+  // const JWT = jwt.sign({ access_token }, serverRuntimeConfig.JWT_SECRET, { expiresIn: expires_in });
+
+  // setCookie("JWT", JWT, { req, res, maxAge: 60 * 60 * 24 * 365 });
+  setJWTCookie("LICHESS_AUTH", { access_token }, expires_in, req, res);
+  const Location = getBaseUrl(req);
+  res.writeHead(301, { Location }).end();
+  // res.json({ ok: true });
 };
 
 export default apiHandler;
