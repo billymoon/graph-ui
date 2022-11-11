@@ -1,18 +1,20 @@
 import { getJWTCookie } from "~/api-utils/jwt";
 import LichessApi from "~/api-utils/lichess-api";
+import { Button, Box } from "@chakra-ui/react";
+import NavBar from "~/components/NavBar";
 
 const Page = ({ profile }) => {
-  return profile ? (
-    <div>
-      I know who you are:{" "}
-      <pre>
-        <code>{JSON.stringify(profile, null, 2)}</code>
-      </pre>
-    </div>
-  ) : (
-    <div>
-      <a href="/api/auth/signin">Sign in through Lichess</a>
-    </div>
+  return (
+    <Box>
+      <NavBar username={profile?.username} />
+      <Box p={4}>
+        {profile && (
+          <pre>
+            <code>{JSON.stringify(profile, null, 2)}</code>
+          </pre>
+        )}
+      </Box>
+    </Box>
   );
 };
 
