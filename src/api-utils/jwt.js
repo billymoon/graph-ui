@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie, setCookie, deleteCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
 import getConfig from "next/config";
 import { encrypt, decrypt } from "~/utils/crypt";
@@ -16,3 +16,6 @@ export const getJWTCookie = (key, req, res) => {
   const JWT = getCookie(key, { req, res });
   return JWT ? jwt.decode(decrypt(JWT)) : {};
 };
+
+export const deleteJWTCookie = (key, req, res) =>
+  deleteCookie(key, { req, res });

@@ -1,5 +1,3 @@
-// import jwt from 'jsonwebtoken';
-// import { setCookie } from 'cookies-next';
 import getConfig from "next/config";
 import getBaseUrl from "~/utils/get-base-url";
 import { decrypt } from "~/utils/crypt";
@@ -36,13 +34,9 @@ const apiHandler = async (req, res) => {
     }
   ).then((r) => r.json());
 
-  // const JWT = jwt.sign({ access_token }, serverRuntimeConfig.JWT_SECRET, { expiresIn: expires_in });
-
-  // setCookie("JWT", JWT, { req, res, maxAge: 60 * 60 * 24 * 365 });
   setJWTCookie("LICHESS_AUTH", { access_token }, expires_in, req, res);
   const Location = getBaseUrl(req);
   res.writeHead(301, { Location }).end();
-  // res.json({ ok: true });
 };
 
 export default apiHandler;
