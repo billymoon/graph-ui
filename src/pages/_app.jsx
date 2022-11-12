@@ -12,7 +12,7 @@ const emotionTheme = extendTheme({
   fonts: {
     body: `${FONT}, Sans-Serif`,
     heading: `${FONT}, Sans-Serif`,
-    mono: "Helvetica, Courier, Sans-Serif",
+    mono: "Courier, Sans-Serif",
   },
   styles: {
     global: ({ colorMode }) => ({
