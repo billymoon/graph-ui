@@ -6,6 +6,8 @@ const serverDefaults = {
     "bdf72e1917823ee68d5ce655a5a4b8fce8e17ab555a8b0521bf7322ff83bcdf9",
   ENCRYPTION_IV: "0b6b8035ac5b9439344b1f3ecd313f39",
   JWT_SECRET: "e499dbd1dc9ca3f6c86585bc861ba0bc00a0e8dc",
+  FONT: "Roboto",
+  dev: process.env.NODE_ENV !== "production",
 };
 
 const serverRuntimeConfig = {
@@ -20,7 +22,7 @@ const serverRuntimeConfig = {
   ),
 };
 
-const publicKeys = ["NODE_ENV"];
+const publicKeys = ["NODE_ENV", "dev", "FONT"];
 const publicRuntimeConfig = Object.entries(serverRuntimeConfig).reduce(
   (memo, [key, val]) =>
     publicKeys.includes(key) ? { ...memo, [key]: val } : memo,

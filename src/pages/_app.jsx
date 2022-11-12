@@ -1,20 +1,17 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import Head from "next/head";
 import getConfig from "next/config";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme, extendTheme } from "@chakra-ui/react";
 
-// import "./_app.css";
-// import Layout from "../components/Layout";
-
 const { publicRuntimeConfig } = getConfig();
 
-const { dev, font } = publicRuntimeConfig;
+const { dev, FONT } = publicRuntimeConfig;
 
 const emotionTheme = extendTheme({
   fonts: {
-    body: `${font}, Sans-Serif`,
-    heading: `${font}, Sans-Serif`,
+    body: `${FONT}, Sans-Serif`,
+    heading: `${FONT}, Sans-Serif`,
     mono: "Helvetica, Courier, Sans-Serif",
   },
   styles: {
@@ -118,7 +115,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       <Head>
-        <link
+        {/* <link
           rel="icon"
           type="image/png"
           sizes="16x16"
@@ -129,7 +126,7 @@ function MyApp({ Component, pageProps }) {
           type="image/png"
           sizes="32x32"
           href="/favicon-32x32.png"
-        />
+        /> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -138,7 +135,7 @@ function MyApp({ Component, pageProps }) {
         />
         <link
           rel="stylesheet"
-          href={`https://fonts.googleapis.com/css2?family=${font}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${FONT}&display=swap`}
         />
         <script dangerouslySetInnerHTML={{ __html: consoleWarnScript }} />
       </Head>
