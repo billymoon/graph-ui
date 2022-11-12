@@ -2,6 +2,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import * as React from "react";
 import createEmotionServer from "@emotion/server/create-instance";
 import { cache } from "@emotion/css";
+// import { ColorModeScript } from '@chakra-ui/react'
 
 const renderStatic = async (html) => {
   if (html === undefined) {
@@ -37,6 +38,7 @@ export default class AppDocument extends Document {
       <Html>
         <Head />
         <body>
+          {/* <ColorModeScript initialColorMode={"light"} /> */}
           <Main />
           <NextScript />
         </body>
