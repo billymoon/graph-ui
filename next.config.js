@@ -38,6 +38,10 @@ module.exports = {
         source: "/admin",
         destination: "/admin/index.html",
       },
+      {
+        source: "/sql",
+        destination: "/sql/index.html",
+      },
     ];
   },
 };
